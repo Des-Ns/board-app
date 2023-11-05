@@ -1,0 +1,22 @@
+<button mat-button class="add-btn" (click)="showModal = true">
+  <mat-icon>add</mat-icon>
+  ADD NEW PROJECT
+</button>
+
+<app-modal *ngIf="showModal" (dismiss)="showModal = false">
+  <header modalTitle class="title" fxLayoutAlign="center center">
+    <mat-icon class="icon material-symbols-outlined"> add_box</mat-icon>
+    <h1>Create new project</h1>
+  </header>
+
+  <mat-divider></mat-divider>
+
+  <main>
+    <app-project-form [project]="project"></app-project-form>
+  </main>
+
+  <!-- <mat-divider></mat-divider> -->
+
+  <!-- <footer modalFooter fxLayoutAlign="center center">
+  </footer> -->
+</app-modal>

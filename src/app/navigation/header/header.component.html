@@ -1,0 +1,66 @@
+<mat-toolbar color="primary" class="toolbar">
+  <div
+    class="title"
+    fxLayoutAlign="start center"
+    (click)="$event.stopPropagation()"
+  >
+    <button mat-icon-button (click)="onMenuChange($event)">
+      <mat-icon class="icon" aria-label="menu">menu</mat-icon>
+    </button>
+    <span routerLink="welcome">Project Boards</span>
+  </div>
+
+  <ul
+    fxLayout
+    fxLayoutGap="10px"
+    fxLayoutAlign="start center"
+    class="list-items"
+  >
+    <li class="list-item">
+      <a>Projects</a>
+    </li>
+    <li class="list-item">
+      <a>Filters</a>
+    </li>
+  </ul>
+
+  <span class="spacer" fxFlex></span>
+
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menuNew"
+    class="icon"
+    aria-label="new "
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-menu #menuNew="matMenu">
+    <button mat-menu-item>Add new project</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>Add new member</button>
+  </mat-menu>
+
+  <button mat-icon-button class="icon" aria-label="notifications">
+    <mat-icon>notifications</mat-icon>
+  </button>
+
+  <!-- <button mat-icon-button class="icon" aria-label="settings">
+    <mat-icon>settings</mat-icon>
+  </button> -->
+
+  <button
+    mat-icon-button
+    class="icon"
+    aria-label="account circle"
+    [matMenuTriggerFor]="menuSettings"
+  >
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #menuSettings="matMenu">
+    <p class="settings-caption">Settings</p>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>Theme</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+</mat-toolbar>

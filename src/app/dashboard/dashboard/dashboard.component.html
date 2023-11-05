@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>PROJECTS</h2>
+
+  <section
+    fxLayout="row"
+    fxLayoutAlign="start start"
+    fxLayoutGap="8px"
+    class="projects-container"
+  >
+    <div class="to-do" fxLayout="column" fxLaoutAlign="center center">
+      <div
+        class="cards-container"
+        fxLayout="column"
+        fxLaoutAlign="start center"
+      >
+        <h3 class="caption">To Do</h3>
+        <ul class="list">
+          <li class="list-item" *ngFor="let project of toDoProjects$ | async">
+            <app-project [project]="project"></app-project>
+          </li>
+        </ul>
+        <!-- ADD PROJECT BUTTON + modal -->
+        <app-project-create></app-project-create>
+      </div>
+    </div>
+
+    <div class="in-progress">
+      <div
+        class="cards-container"
+        fxLayout="column"
+        fxLaoutAlign="start center"
+      >
+        <h3 class="caption">In Progress</h3>
+        <ul class="list">
+          <li
+            class="list-item"
+            *ngFor="let project of inProgressProjects$ | async"
+          >
+            <app-project [project]="project"></app-project>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="finished">
+      <div
+        class="cards-container"
+        fxLayout="column"
+        fxLaoutAlign="start center"
+      >
+        <h3 class="caption">Finished</h3>
+        <ul class="list">
+          <li
+            class="list-item"
+            *ngFor="let project of finishedProjects$ | async"
+          >
+            <app-project [project]="project"></app-project>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>

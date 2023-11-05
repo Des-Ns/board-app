@@ -1,0 +1,83 @@
+<mat-list
+  fxLayout="column"
+  fxLayoutAlign="space-around start"
+  role="list"
+  class="list"
+>
+  <mat-list-item
+    class="list-item"
+    routerLink="dashboard"
+    routerLinkActive="nav-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <div class="list-item-content" fxLayoutAlign=" center">
+      <mat-icon
+        class="icon"
+        aria-hidden="false"
+        aria-label="dashboard"
+        fontIcon="dashboard"
+      ></mat-icon>
+      <span class="caption">Dashboard</span>
+    </div>
+  </mat-list-item>
+
+  <mat-divider class="hr"></mat-divider>
+
+  <mat-list-item
+    class="list-item"
+    routerLink="team"
+    routerLinkActive="nav-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <div class="list-item-content" fxLayoutAlign=" center">
+      <mat-icon
+        class="icon"
+        aria-hidden="false"
+        aria-label="groups"
+        fontIcon="groups"
+      ></mat-icon>
+      <span class="caption">Team</span>
+    </div>
+  </mat-list-item>
+
+  <mat-divider class="hr"></mat-divider>
+
+  <mat-list-item
+    class="list-item"
+    routerLink="activities"
+    routerLinkActive="nav-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <div class="list-item-content" fxLayoutAlign=" center">
+      <mat-icon
+        class="icon"
+        aria-hidden="false"
+        aria-label="earthquake"
+        fontIcon="start"
+      ></mat-icon>
+      <span class="caption">Activities</span>
+    </div>
+  </mat-list-item>
+
+  <mat-divider class="hr"></mat-divider>
+
+  <mat-list-item
+    class="list-item"
+    routerLink="reports"
+    routerLinkActive="nav-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <div class="list-item-content" fxLayoutAlign=" center">
+      <mat-icon
+        class="icon"
+        aria-hidden="false"
+        aria-label="partner_reports"
+        fontIcon="report"
+      ></mat-icon>
+
+      <span class="caption">Reports</span>
+    </div>
+  </mat-list-item>
+
+  <mat-divider class="hr"></mat-divider>
+</mat-list>

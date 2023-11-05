@@ -1,0 +1,36 @@
+.card {
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.dropdown {
+  cursor: pointer;
+}
+
+.icon {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  margin: 0 !important;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-list-item {
+  width: 100%;
+  background-color: rgba(30, 148, 216, 0.12);
+  border-radius: 5px;
+}
+
+.task-list-item p {
+  margin: 0;
+  padding: 6px 6px 16px 10px;
+}

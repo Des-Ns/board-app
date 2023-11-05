@@ -1,0 +1,50 @@
+.container {
+  height: 100%;
+}
+
+.container h2 {
+  padding-left: 1rem;
+  font-weight: 400;
+}
+
+.projects-container {
+  margin: 0 1rem 2.5rem 1rem;
+}
+
+.cards-container {
+  background-color: rgba(30, 148, 216, 0.12);
+  border: 1px solid lightgray;
+  width: 320px;
+  height: 100%;
+  min-height: 300px;
+  border-radius: 5px;
+}
+
+.caption {
+  font-weight: 500;
+  color: #808080;
+  /* -webkit-text-stroke: 0.5px gray; */
+  margin: 0;
+  padding: 1rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list-item {
+  width: 90%;
+  margin: 16px;
+}
+.cards-container button {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.to-do div .add-btn {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  color: #808080;
+  font-size: 1.17rem;
+}

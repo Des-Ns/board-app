@@ -1,0 +1,34 @@
+<div class="task">
+  <header fxLayout="row" fxLayoutAlign="space-between start">
+    <h5>{{ title }}</h5>
+
+    <div [matMenuTriggerFor]="menu" class="dropdown">
+      <mat-icon class="icon">more_horiz</mat-icon>
+    </div>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Mark as complete</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Mark as delayed</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Edit task</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Delete task</button>
+    </mat-menu>
+  </header>
+
+  <p>{{ description }}</p>
+
+  <button mat-button [matMenuTriggerFor]="menuTeam">
+    <span>Task Team</span>
+    <mat-icon iconPositionEnd>expand_more</mat-icon>
+  </button>
+  <mat-menu #menuTeam="matMenu">
+    <ng-container *ngFor="let member of teamMembers$ | async; let i = index">
+      <button mat-menu-item>
+        {{ member.firstName }}{{ member.lastName }} - {{ member.occupation }}
+      </button>
+      <mat-divider *ngIf="i < (teamMembers$ | async)!.length - 1"></mat-divider>
+    </ng-container>
+  </mat-menu>
+</div>

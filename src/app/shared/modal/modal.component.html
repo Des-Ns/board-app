@@ -1,0 +1,37 @@
+<div class="backdrop" (click)="onDismissClick()">
+  <div (click)="$event.stopPropagation()" class="modal">
+    <!--* X button -->
+    <!-- <button mat-button (click)="onDismissClick()">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="close"
+        fontIcon="close"
+      ></mat-icon>
+    </button> -->
+
+    <header class="header">
+      <!--* Title content -->
+      <ng-content select="[modalTitle]"></ng-content>
+    </header>
+
+    <main class="content">
+      <!--* any other elements will display in content -->
+      <ng-content></ng-content>
+    </main>
+
+    <!-- <div class="actions actions-default">
+      <button mat-button (click)="onDismissClick()">OK</button>
+    </div> -->
+
+    <!--* Footer content -->
+    <!-- <footer class="actions">
+      <ng-content select="[modalFooter]"></ng-content>
+    </footer> -->
+  </div>
+</div>
+
+<!-- <app-modal>
+  <div modalTitle>
+    <h1>Content</h1>
+  </div>
+</app-modal> -->

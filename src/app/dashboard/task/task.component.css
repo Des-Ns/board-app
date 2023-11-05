@@ -1,0 +1,21 @@
+.task {
+  width: 100%;
+  background-color: rgba(30, 148, 216, 0.12);
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.task h5 {
+  margin: 0;
+  padding: 0.5rem 0.5rem;
+}
+
+.task p {
+  margin: 0;
+  font-size: 12px;
+  padding: 6px 6px 16px 10px;
+}
+
+.dropdown {
+  margin: 0 5px;
+}

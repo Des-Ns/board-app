@@ -1,0 +1,59 @@
+<mat-card class="card">
+  <mat-card-header fxLayout="row" fxLayoutAlign="space-between start">
+    <mat-card-title class="title">{{ title }}</mat-card-title>
+
+    <div [matMenuTriggerFor]="menu" class="dropdown">
+      <mat-icon class="icon">more_horiz</mat-icon>
+    </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Forward project</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Edit</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Mark as complete</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Delete project</button>
+    </mat-menu>
+
+    <!-- <mat-card-subtitle></mat-card-subtitle> -->
+  </mat-card-header>
+
+  <mat-card-content class="card-content">
+    <p>{{ description }}</p>
+
+    <button mat-button [matMenuTriggerFor]="menuMembers">
+      <span>Main Team</span>
+      <mat-icon iconPositionEnd>expand_more</mat-icon>
+    </button>
+    <mat-menu #menuMembers="matMenu">
+      <ng-container
+        *ngFor="let member of mainTeamMembers$ | async; let i = index"
+      >
+        <button mat-menu-item>
+          <span>{{ member.firstName }} {{ member.lastName }} - </span>
+          <span> {{ member.occupation }}</span>
+        </button>
+
+        <mat-divider
+          *ngIf="i < (mainTeamMembers$ | async)!.length - 1"
+        ></mat-divider>
+      </ng-container>
+    </mat-menu>
+
+    <ul class="task-list" fxLayout="column" fxLayoutAlign="start center">
+      <ng-container *ngFor="let task of projectTasks$ | async; let i = index">
+        <li class="task-list-item">
+          <app-task [task]="task"></app-task>
+        </li>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </ul>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button>
+      <mat-icon>add</mat-icon>
+      Add Task
+    </button>
+  </mat-card-actions>
+</mat-card>

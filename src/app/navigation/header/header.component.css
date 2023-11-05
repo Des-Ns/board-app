@@ -1,0 +1,35 @@
+.toolbar {
+  width: 100%;
+  padding-left: 0;
+}
+
+.title {
+  font-size: 1.5rem;
+  padding-left: 0.5rem;
+  width: 300px;
+  border-right: 1px solid #fff;
+}
+
+.title span {
+  padding-left: 0.5rem;
+  cursor: pointer;
+}
+
+.list-items {
+  padding: 0 0 0 1rem;
+}
+
+.list-item {
+  font-size: 1.2rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.icon {
+  /* scale: 1.2; */
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.settings-caption {
+  margin: 1rem 1rem;
+}
