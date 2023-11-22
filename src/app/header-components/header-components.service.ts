@@ -1,18 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import { RequestService } from '../shared/request.service';
-import {
-  BehaviorSubject,
-  Observable,
-  Subscription,
-  tap,
-  map,
-  filter,
-  forkJoin,
-  catchError,
-  switchMap,
-  of,
-} from 'rxjs';
 import { Member, Project } from '../shared/models';
+
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

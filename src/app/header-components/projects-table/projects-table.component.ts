@@ -1,22 +1,18 @@
-import {
-  Component,
-  ViewChild,
-  OnInit,
-  AfterViewInit,
-  OnDestroy,
-} from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+
+import { HeaderComponentsService } from '../header-components.service';
+import { DashboardService } from 'src/app/sidenav-components/dashboard/dashboard.service';
+import { ProjectCreateComponent } from 'src/app/sidenav-components/dashboard/project-create/project-create.component';
+import { ProjectEditComponent } from 'src/app/sidenav-components/dashboard/project-edit/project-edit.component';
 import { Member, Project } from 'src/app/shared/models';
+
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable, Subscription } from 'rxjs';
-import { HeaderComponentsService } from '../header-components.service';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { MatDialog } from '@angular/material/dialog';
-import { ProjectTableDialogComponent } from '../project-table-dialog/project-table-dialog.component';
-import { DashboardService } from 'src/app/dashboard/dashboard.service';
-import { ProjectEditComponent } from 'src/app/dashboard/project-edit/project-edit.component';
-import { ProjectCreateComponent } from 'src/app/dashboard/project-create/project-create.component';
+
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-projects-table',
@@ -84,13 +80,6 @@ export class ProjectsTableComponent implements OnInit, OnDestroy {
       default:
         return '';
     }
-  }
-
-  openDialog(title: string, content: string): void {
-    this.dialog.open(ProjectTableDialogComponent, {
-      width: '250px',
-      data: { title, content },
-    });
   }
 
   onClick(project: Project) {

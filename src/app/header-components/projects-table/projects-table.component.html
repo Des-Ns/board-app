@@ -1,4 +1,4 @@
-<header fxLayoutAlign="space-between center">
+<header fxLayoutAlign="space-between center" class="header">
   <div class="header-container" fxLayoutAlign=" center">
     <mat-icon
       class="icon"
@@ -37,13 +37,13 @@
   />
 </mat-form-field>
 
-<div class="mat-elevation-z8">
+<div class="table-container mat-elevation-z8">
   <!-- TABLE -->
-  <table mat-table [dataSource]="dataSource" matSort>
+  <table mat-table [dataSource]="dataSource" matSort class="table">
     <!-- 1 Row Number -->
-    <ng-container matColumnDef="rowNumber">
+    <ng-container matColumnDef="rowNumber" sticky>
       <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
-      <td mat-cell *matCellDef="let element; let i = index">
+      <td mat-cell *matCellDef="let element; let i = index" class="row-number">
         {{ i + 1 }}
       </td>
     </ng-container>
@@ -62,7 +62,14 @@
     <ng-container matColumnDef="description">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
       <td mat-cell *matCellDef="let row">
-        <button
+        <div
+          class="description-container"
+          matTooltip="{{ row.description }}"
+          matTooltipPosition="above"
+        >
+          {{ row.description.substring(0, 25) }}...
+        </div>
+        <!-- <button
           mat-raised-button
           class="description-btn"
           (click)="
@@ -71,7 +78,7 @@
           "
         >
           {{ row.description.substring(0, 25) }}...
-        </button>
+        </button> -->
       </td>
     </ng-container>
 

@@ -17,6 +17,23 @@ th {
   width: 100%;
 }
 
+.table-container {
+  max-width: 100%;
+  overflow: auto;
+}
+
+.table {
+  border-bottom: 1px solid lightgray;
+}
+
+.mat-mdc-table-sticky {
+  border-right: 1px solid lightgray;
+}
+
+.row-number {
+  text-align: center;
+}
+
 .name-container {
   white-space: nowrap;
 }
@@ -29,10 +46,15 @@ th {
   text-overflow: ellipsis;
 }
 
-.description-btn {
+.description-container {
   white-space: nowrap;
   width: 200px;
 }
+
+/* .description-btn {
+  white-space: nowrap;
+  width: 200px;
+} */
 
 .date-range-container div {
   white-space: nowrap;

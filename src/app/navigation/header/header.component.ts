@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { DashboardService } from 'src/app/dashboard/dashboard.service';
-import { ProjectCreateComponent } from 'src/app/dashboard/project-create/project-create.component';
-import { MemberCreateComponent } from 'src/app/team/member-create/member-create.component';
-import { TeamService } from 'src/app/team/team.service';
+
+import { TeamService } from 'src/app/sidenav-components/team/team.service';
+import { DashboardService } from 'src/app/sidenav-components/dashboard/dashboard.service';
+import { ProjectCreateComponent } from 'src/app/sidenav-components/dashboard/project-create/project-create.component';
+import { MemberCreateComponent } from 'src/app/sidenav-components/team/member-create/member-create.component';
 
 @Component({
   selector: 'app-header',

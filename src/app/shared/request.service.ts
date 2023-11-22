@@ -1,8 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter, find, map, tap } from 'rxjs/operators';
+
+import { HttpClient } from '@angular/common/http';
 import { Member, Project, Task } from './models';
+
 import { BehaviorSubject, Observable } from 'rxjs';
+import { filter, find, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',

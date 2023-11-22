@@ -13,8 +13,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { MaterialsModule } from './materials.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { SharedModule } from './shared/shared.module';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { TeamModule } from './team/team.module';
+import { DashboardModule } from './sidenav-components/dashboard/dashboard.module';
+import { TeamModule } from './sidenav-components/team/team.module';
 import { HeaderComponentsModule } from './header-components/header-components.module';
 
 @NgModule({
