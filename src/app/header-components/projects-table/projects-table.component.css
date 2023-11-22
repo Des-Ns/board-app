@@ -1,0 +1,83 @@
+th {
+  white-space: nowrap;
+}
+
+.icon {
+  scale: 1.5;
+  margin: 0 1rem;
+}
+
+.create-btn {
+  margin-right: 1rem;
+}
+
+.filter {
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.name-container {
+  white-space: nowrap;
+}
+
+.description {
+  cursor: pointer;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description-btn {
+  white-space: nowrap;
+  width: 200px;
+}
+
+.date-range-container div {
+  white-space: nowrap;
+}
+
+.date-divide {
+  margin: 0 0.5rem;
+}
+
+.status {
+  min-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  margin-right: 0.3rem;
+}
+
+.yellow-badge {
+  background-image: linear-gradient(to right, rgb(255, 205, 40) 50%, #ffffff00);
+}
+
+.green-badge {
+  background-image: linear-gradient(to right, #03c600 50%, #ffffff00);
+}
+
+.blue-badge {
+  background-image: linear-gradient(to right, #90caf9 50%, #ffffff00);
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.headder-row {
+  cursor: pointer;
+}

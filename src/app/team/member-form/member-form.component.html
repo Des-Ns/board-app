@@ -1,0 +1,238 @@
+<form
+  [formGroup]="memberForm"
+  (ngSubmit)="onSubmit()"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+>
+  <!--* FIRST NAME -->
+  <mat-form-field class="field">
+    <mat-label>First name</mat-label>
+    <input formControlName="firstName" matInput placeholder="Enter name..." />
+    <mat-error
+      class="input-error"
+      *ngIf="memberForm.controls['firstName'].invalid"
+      >First name is required</mat-error
+    >
+  </mat-form-field>
+
+  <!--* LAST NAME -->
+  <mat-form-field class="field">
+    <mat-label>Last name</mat-label>
+    <input formControlName="lastName" matInput placeholder="Enter name..." />
+    <mat-error
+      class="input-error"
+      *ngIf="memberForm.controls['lastName'].invalid"
+      >Last name is required</mat-error
+    >
+  </mat-form-field>
+
+  <!--* MEMBER ID -->
+  <mat-card class="details-container">
+    <mat-card-content class="details-content">
+      <h5 class="info first">Member id:</h5>
+      <h5 class="info">{{ memberForm.controls["id"].value }}</h5>
+    </mat-card-content>
+  </mat-card>
+
+  <!--* EMAIL -->
+  <mat-form-field class="field">
+    <mat-label>Email</mat-label>
+    <input
+      formControlName="email"
+      type="email"
+      matInput
+      placeholder="Enter email..."
+    />
+    <mat-error
+      class="input-error"
+      *ngIf="memberForm.controls['email'].errors?.['required']"
+      >Email is required</mat-error
+    >
+    <mat-error
+      class="input-error"
+      *ngIf="memberForm.controls['email'].errors?.['email']"
+      >Email is invalid</mat-error
+    >
+  </mat-form-field>
+
+  <!--* AVATAR -->
+  <mat-form-field class="field">
+    <mat-label>Avatar</mat-label>
+    <input
+      formControlName="avatar"
+      type="text"
+      matInput
+      placeholder="Enter avatar URL..."
+    />
+  </mat-form-field>
+  <!--* AVATAR-DISPLAY -->
+  <mat-card
+    class="details-container"
+    *ngIf="
+      memberForm.controls['avatar'].valid && memberForm.controls['avatar'].value
+    "
+  >
+    <mat-card-content class="details-content">
+      <div class="avatar-container" fxLayoutAlign="space-around center">
+        <img [src]="memberForm.controls['avatar'].value" />
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!--* BIO -->
+  <mat-form-field class="field">
+    <mat-label>About</mat-label>
+    <textarea
+      formControlName="bio"
+      matInput
+      type="text"
+      class="bio"
+      placeholder="Enter about info..."
+    ></textarea>
+  </mat-form-field>
+
+  <!--* OCCUPATION -->
+  <mat-form-field class="field">
+    <mat-label>Occupation</mat-label>
+    <input
+      formControlName="occupation"
+      matInput
+      type="text"
+      placeholder="Enter profession..."
+    />
+    <mat-error
+      class="input-error"
+      *ngIf="memberForm.controls['occupation'].invalid"
+      >Occupation is required</mat-error
+    >
+  </mat-form-field>
+
+  <!--* ADDRESS -->
+  <mat-form-field class="field">
+    <mat-label>Address</mat-label>
+    <input
+      formControlName="fullAddress"
+      matInput
+      type="text"
+      placeholder="Enter address..."
+    />
+    <mat-error
+      class="input-error"
+      *ngIf="memberForm.controls['fullAddress'].invalid"
+      >Address is required</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field class="field">
+    <mat-label>City</mat-label>
+    <input
+      formControlName="city"
+      matInput
+      type="text"
+      placeholder="Enter city..."
+    />
+    <mat-error class="input-error" *ngIf="memberForm.controls['city'].invalid"
+      >City is required</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field class="field">
+    <mat-label>Post code</mat-label>
+    <input
+      formControlName="postCode"
+      matInput
+      type="text"
+      placeholder="Enter post code..."
+    />
+    <mat-error
+      class="input-error"
+      *ngIf="memberForm.controls['postCode'].invalid"
+      >Post code is required</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field class="field">
+    <mat-label>Country</mat-label>
+    <input
+      formControlName="country"
+      matInput
+      type="text"
+      placeholder="Enter coutry..."
+    />
+    <mat-error
+      class="input-error"
+      *ngIf="memberForm.controls['country'].invalid"
+      >Country is required</mat-error
+    >
+  </mat-form-field>
+
+  <!--* PHONES -->
+  <ng-container formArrayName="phones">
+    <ng-container
+      *ngFor="
+        let phone of memberForm.controls['phones'].value;
+        let i = index;
+        trackBy: trackByIndex
+      "
+    >
+      <ng-container>
+        <div class="phone-container" fxLayoutAlign="start center">
+          <mat-form-field class="field-phone">
+            <mat-label>Phone number</mat-label>
+            <mat-icon matSuffix>phone</mat-icon>
+            <input
+              [formControlName]="i"
+              matInput
+              type="text"
+              placeholder="Enter phone number..."
+            />
+          </mat-form-field>
+          <button
+            (click)="onAddPhoneNumber()"
+            mat-fab
+            color="primary"
+            class="phone-btn"
+            type="button"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+          <button
+            *ngIf="i > 0"
+            (click)="onRemovePhoneNumber(i)"
+            mat-fab
+            color="accent"
+            class="phone-btn"
+            type="button"
+          >
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <!--* PROJECTS -->
+  <mat-card
+    class="details-container"
+    *ngIf="memberForm.controls['projects'].value"
+  >
+    <mat-card-content class="details-content">
+      <h5 class="info first">Project involvement in:</h5>
+      <h5 class="info">{{ memberForm.controls["projects"].value }}</h5>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- <hr class="divider" /> -->
+  <mat-divider class="divider"></mat-divider>
+  <!--* SUBMIT BUTTON -->
+  <button
+    mat-raised-button
+    [disabled]="memberForm.invalid"
+    color="primary"
+    class="create-btn"
+  >
+    SUBMIT MEMBER
+  </button>
+</form>
+
+<!-- <div>{{ memberForm.value | json }}</div> -->

@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { MaterialsModule } from '../materials.module';
 
-import { ModalComponent } from './modal/modal.component';
-import { PipeFormControl } from './pipe-form-control';
+import { FormControlPipe } from './form-control.pipe';
+import { DialogTableComponent } from './dialog-table/dialog-table.component';
 
 @NgModule({
-  declarations: [ModalComponent, PipeFormControl],
+  declarations: [FormControlPipe, DialogTableComponent],
   imports: [CommonModule, MaterialsModule],
-  exports: [ModalComponent, PipeFormControl],
+  exports: [FormControlPipe],
 })
 export class SharedModule {}

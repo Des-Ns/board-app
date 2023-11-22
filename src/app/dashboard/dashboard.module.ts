@@ -12,6 +12,7 @@ import { ProjectComponent } from './project/project.component';
 import { TaskComponent } from './task/task.component';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { ProjectCreateComponent } from './project-create/project-create.component';
+import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { NameExtractionPipe } from './name-extraction.pipe';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { NameExtractionPipe } from './name-extraction.pipe';
     ProjectFormComponent,
     ProjectCreateComponent,
     NameExtractionPipe,
+    ProjectEditComponent,
   ],
   imports: [
     CommonModule,

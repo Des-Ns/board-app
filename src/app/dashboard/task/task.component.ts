@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Member, Task } from '../dashboard.models';
-import { DashboardService } from '../dashboard.service';
+import { Member, Task } from '../../shared/models';
+import { RequestService } from '../../shared/request.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -18,12 +18,14 @@ export class TaskComponent implements OnInit {
   duration!: number;
   dateCreated!: Date;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private requestService: RequestService) {}
 
   ngOnInit(): void {
-    this.teamMembers$ = this.dashboardService.getTaskMembers(this.task.id);
+    if (this.task) {
+      this.teamMembers$ = this.requestService.getTaskMembers(this.task.id);
 
-    this.title = this.task.title;
-    this.description = this.task.description;
+      this.title = this.task.title;
+      this.description = this.task.description;
+    }
   }
 }

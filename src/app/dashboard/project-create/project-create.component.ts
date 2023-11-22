@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Project, projectStatus } from '../dashboard.models';
+import { RequestService } from '../../shared/request.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Project, projectStatus } from '../../shared/models';
 import { v4 as uuidv4 } from 'uuid';
-import { DashboardService } from '../dashboard.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-project-create',
@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./project-create.component.css'],
 })
 export class ProjectCreateComponent implements OnInit {
-  showModal = false;
   // provide default values for init of projectForm
   project: Project = {
     id: uuidv4(),
@@ -25,7 +24,17 @@ export class ProjectCreateComponent implements OnInit {
     finalDate: null,
   };
 
-  constructor() {}
+  constructor(
+    private requestService: RequestService,
+    private matDialogRef: MatDialogRef<ProjectCreateComponent, any>
+  ) {}
 
   ngOnInit(): void {}
+
+  onFormSubmit(project: Project) {
+    this.requestService.postNewProject(project).subscribe(() => {
+      this.matDialogRef.close();
+      this.requestService.fetchProjects();
+    });
+  }
 }

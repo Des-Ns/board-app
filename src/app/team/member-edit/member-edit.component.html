@@ -1,0 +1,16 @@
+<!--* DIALOG CONTENT -->
+<div class="content" mat-dialog-content>
+  <header modalTitle class="title" fxLayoutAlign="center center">
+    <mat-icon class="icon material-symbols-outlined">edit</mat-icon>
+    <h1>Edit member</h1>
+  </header>
+
+  <mat-divider class="divider"></mat-divider>
+
+  <main>
+    <app-member-form
+      (memberAction)="onFormSubmit($event)"
+      [member]="member"
+    ></app-member-form>
+  </main>
+</div>

@@ -1,0 +1,68 @@
+.field {
+  width: 80%;
+}
+
+.field:first-child {
+  margin-top: 1.5rem;
+}
+
+.field-phone {
+  width: 60%;
+}
+
+.details-container {
+  width: 80%;
+  margin-bottom: 1rem;
+}
+
+.details-content {
+  background-color: #e2f1fe;
+}
+
+.avatar-container {
+  height: 10rem;
+}
+
+.avatar-container img {
+  height: 100%;
+  border-radius: 50%;
+}
+
+.info {
+  width: 80%;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.info.first {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.bio {
+  height: 6rem;
+}
+
+.phone-container {
+  width: 80%;
+}
+
+.phone-btn {
+  margin-bottom: 1.5rem;
+  margin-left: 1rem;
+}
+
+.divider {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.create-btn {
+  width: 80%;
+  margin-bottom: 2rem;
+}
+
+.input-error {
+  font-size: 0.75rem;
+}

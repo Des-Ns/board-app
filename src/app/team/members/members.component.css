@@ -3,6 +3,10 @@
   margin: 0 1rem;
 }
 
+.create-btn {
+  margin-right: 1rem;
+}
+
 .filter {
   cursor: pointer;
   margin-top: 1rem;
@@ -17,6 +21,7 @@
 
 .image-container {
   height: 40px;
+  margin-left: 1rem;
 }
 
 .image-container img {
@@ -25,9 +30,9 @@
   width: auto;
 }
 
-.name {
+/* .name {
   margin-left: 1rem;
-}
+} */
 
 .bio {
   cursor: pointer;
@@ -35,6 +40,14 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.th {
+  white-space: nowrap;
+}
+
+.projects-btn {
+  width: 100%;
 }
 
 table {
@@ -49,8 +62,3 @@ table {
 .headder-row {
   cursor: pointer;
 }
-
-/* td,
-th {
-  width: 25%;
-} */

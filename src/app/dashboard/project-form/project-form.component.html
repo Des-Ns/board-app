@@ -4,13 +4,28 @@
   fxLayout="column"
   fxLayoutAlign="center center"
 >
-  <!-- TITLE -->
+  <!--* TITLE -->
   <mat-form-field class="field">
     <mat-label>Project title</mat-label>
     <input formControlName="title" placeholder="Enter title..." matInput />
+    <mat-error
+      class="input-error"
+      *ngIf="projectForm.controls['title'].errors?.['required']"
+      >Project title is required</mat-error
+    >
   </mat-form-field>
 
-  <!-- DATE PICKER -->
+  <!--* PROJECT ID -->
+  <mat-card class="details-container">
+    <mat-card-content class="details-content">
+      <h5 class="info first">Project Id:</h5>
+      <h5 class="info">
+        {{ projectForm.controls["id"].value }}
+      </h5>
+    </mat-card-content>
+  </mat-card>
+
+  <!--* DATE PICKER -->
   <mat-form-field class="field">
     <mat-label>Enter a date range</mat-label>
     <mat-date-range-input [formGroup]="projectForm" [rangePicker]="picker">
@@ -37,42 +52,70 @@
     >
   </mat-form-field>
 
-  <p>
-    <!-- time is off 1 day in json, but not in date pipe?-->
-    Selected range: {{ projectForm.value.startDate | date }}
-    {{ projectForm.value.finalDate | date }}
-  </p>
+  <!--* SELECTED RANGE -->
+  <mat-card class="details-container">
+    <mat-card-content class="details-content">
+      <h5 class="info first">
+        <!-- time is off 1 day in json, but not in date pipe?-->
+        Selected range: {{ projectForm.value.startDate | date }}
+        {{ projectForm.value.finalDate | date }}
+      </h5>
+      <h5 class="info">
+        Duration:
+        {{
+          getDuration(projectForm.value.startDate, projectForm.value.finalDate)
+        }}
+        days
+      </h5>
+    </mat-card-content>
+  </mat-card>
 
-  <!-- DESCRIPTION -->
+  <!--* DESCRIPTION -->
   <mat-form-field class="field">
     <mat-label>Description</mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput formControlName="description"></textarea>
+    <mat-error
+      class="input-error"
+      *ngIf="projectForm.controls['description'].errors?.['required']"
+      >Description is required</mat-error
+    >
   </mat-form-field>
 
-  <!-- TEAM SELECT -->
+  <!--* TEAM SELECT -->
   <mat-form-field class="field">
     <mat-label>Team</mat-label>
     <mat-select
-      [formControl]="projectForm.controls['team'] | formControl"
+      [formControl]="projectForm.controls['teamIds'] | formControl"
       multiple
     >
       <mat-select-trigger>
-        {{(projectForm.controls['team'].value?.[0] | nameExtraction)  || ''}}
+        {{(projectForm.controls['teamIds'].value?.[0] | nameExtraction)  || ''}}
         <span
-          *ngIf="(projectForm.controls['team'].value?.length || 0) > 1"
+          *ngIf="(projectForm.controls['teamIds'].value?.length || 0) > 1"
           class="additional-selection"
         >
-          (+{{ (projectForm.controls["team"].value?.length || 0) - 1 }}
+          (+{{ (projectForm.controls["teamIds"].value?.length || 0) - 1 }}
           {{
-            projectForm.controls["team"].value?.length === 2
+            projectForm.controls["teamIds"].value?.length === 2
               ? "other"
               : "others"
           }})
         </span>
       </mat-select-trigger>
+      <!-- with value= we save the ids in the form -->
       <mat-option *ngFor="let member of members$ | async" [value]="member"
         >{{ member.firstName }} {{ member.lastName }}</mat-option
       >
+    </mat-select>
+  </mat-form-field>
+
+  <!-- STATUS -->
+  <mat-form-field class="field">
+    <mat-label>Status</mat-label>
+    <mat-select [formControl]="projectForm.controls['status'] | formControl">
+      <mat-option *ngFor="let status of projectStatus" [value]="status">{{
+        status
+      }}</mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -82,6 +125,6 @@
     color="primary"
     class="create-btn"
   >
-    CREATE PROJECT
+    SUBMIT PROJECT
   </button>
 </form>

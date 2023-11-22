@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Member, Project, Task } from '../dashboard.models';
+import { RequestService } from '../../shared/request.service';
 import { DashboardService } from '../dashboard.service';
-import { Subscription, Observable } from 'rxjs';
+import { ProjectEditComponent } from '../project-edit/project-edit.component';
+import { Member, Project, Task, projectStatus } from '../../shared/models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-project',
@@ -9,28 +11,56 @@ import { Subscription, Observable } from 'rxjs';
   styleUrls: ['./project.component.css'],
 })
 export class ProjectComponent implements OnInit {
-  @Input() project!: Project;
+  @Input() currProject!: Project;
   mainTeamMembers$!: Observable<Member[]>;
   projectTasks$!: Observable<Task[]>;
 
   title!: string;
   description!: string;
-  // menuItem!: string[];
-  // mainTeamMembers!: Members[];
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(
+    private requestService: RequestService,
+    private dashboardService: DashboardService
+  ) {}
 
   ngOnInit(): void {
-    this.dashboardService.fetchMembers();
-    this.mainTeamMembers$ = this.dashboardService.getProjectMembers(
-      this.project.id
-    );
-    this.dashboardService.fetchTasks();
-    this.projectTasks$ = this.dashboardService.getTasks(this.project.id);
+    this.title = this.currProject.title;
+    this.description = this.currProject.description;
 
-    if (this.project) {
-      this.title = this.project.title;
-      this.description = this.project.description;
+    this.requestService.fetchMembers();
+    this.mainTeamMembers$ = this.requestService.getProjectMembers(
+      this.currProject.id
+    );
+
+    this.requestService.fetchTasks();
+    this.projectTasks$ = this.requestService.getTasks(this.currProject.id);
+  }
+
+  openEditProjectDialog() {
+    this.dashboardService.openProjectDialog(
+      ProjectEditComponent,
+      this.currProject
+    );
+    console.log(this.mainTeamMembers$);
+  }
+
+  onDeleteProject() {
+    this.requestService.deleteProject(this.currProject.id).subscribe(() => {
+      console.log('delete currProject =>', this.currProject);
+      this.requestService.fetchProjects();
+    });
+  }
+
+  onProjectStatusChange() {
+    if (this.currProject.status === projectStatus.ToDo) {
+      this.currProject.status = projectStatus.inProgress;
+    } else if (this.currProject.status === projectStatus.inProgress) {
+      this.currProject.status = projectStatus.finished;
     }
+    this.requestService
+      .patchProjectStatus(this.currProject, this.currProject.status)
+      .subscribe(() => {
+        this.requestService.fetchProjects();
+      });
   }
 }

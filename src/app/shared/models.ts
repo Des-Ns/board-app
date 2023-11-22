@@ -1,5 +1,3 @@
-import { Observable } from 'rxjs';
-
 export interface Project {
   dateCreated: null | Date;
   startDate: null | Date;
@@ -22,6 +20,11 @@ export interface Member {
   occupation?: string;
   avatar?: string;
   projects?: string[] | Project[];
+  fullAddress: string;
+  city: string;
+  country: string;
+  postCode: string;
+  phones: string[];
 }
 
 export interface Task {

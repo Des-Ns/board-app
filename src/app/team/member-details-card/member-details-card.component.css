@@ -1,0 +1,65 @@
+.card {
+  padding: 2rem;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 10rem;
+  margin-right: 1rem;
+}
+
+.h-divider {
+  color: lightgray;
+}
+
+.title-group {
+  margin-left: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+}
+
+.sub-subtitle {
+  margin-bottom: 0.3rem;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: gray;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.dot {
+  display: inline-block;
+  margin: auto;
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: lightgray;
+  border-radius: 50%;
+}
+
+.content {
+  margin-bottom: 2.5rem;
+}
+
+.content h4 {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.content p {
+  color: gray;
+  margin-top: 0;
+}
+
+.btn {
+  width: 48%;
+}

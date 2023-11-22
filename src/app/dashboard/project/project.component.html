@@ -1,23 +1,30 @@
 <mat-card class="card">
+  <!--* CARD HEADER -->
   <mat-card-header fxLayout="row" fxLayoutAlign="space-between start">
     <mat-card-title class="title">{{ title }}</mat-card-title>
 
+    <!--* DROPDOWN -->
     <div [matMenuTriggerFor]="menu" class="dropdown">
       <mat-icon class="icon">more_horiz</mat-icon>
     </div>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Forward project</button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item>Edit</button>
+      <button mat-menu-item (click)="onProjectStatusChange()">
+        Forward project
+      </button>
       <mat-divider></mat-divider>
       <button mat-menu-item>Mark as complete</button>
       <mat-divider></mat-divider>
-      <button mat-menu-item>Delete project</button>
+      <button mat-menu-item (click)="openEditProjectDialog()">
+        Edit project
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="onDeleteProject()">Delete project</button>
     </mat-menu>
 
     <!-- <mat-card-subtitle></mat-card-subtitle> -->
   </mat-card-header>
 
+  <!--* CARD CONTENT -->
   <mat-card-content class="card-content">
     <p>{{ description }}</p>
 
@@ -26,17 +33,20 @@
       <mat-icon iconPositionEnd>expand_more</mat-icon>
     </button>
     <mat-menu #menuMembers="matMenu">
-      <ng-container
-        *ngFor="let member of mainTeamMembers$ | async; let i = index"
-      >
-        <button mat-menu-item>
-          <span>{{ member.firstName }} {{ member.lastName }} - </span>
-          <span> {{ member.occupation }}</span>
-        </button>
-
-        <mat-divider
-          *ngIf="i < (mainTeamMembers$ | async)!.length - 1"
-        ></mat-divider>
+      <ng-container *ngIf="mainTeamMembers$ | async as members">
+        <ng-container *ngIf="members.length > 0">
+          <ng-container *ngFor="let member of members; let i = index">
+            <button mat-menu-item>
+              <span>{{ member.firstName }} {{ member.lastName }} - </span>
+              <span> {{ member.occupation }}</span>
+            </button>
+            <mat-divider *ngIf="i < members.length - 1"></mat-divider>
+          </ng-container>
+        </ng-container>
+        <div *ngIf="members.length === 0">
+          <!-- Message or placeholder when there are no members -->
+          No team members available.
+        </div>
       </ng-container>
     </mat-menu>
 
@@ -50,6 +60,7 @@
     </ul>
   </mat-card-content>
 
+  <!--* CARD ACTIONS -->
   <mat-card-actions>
     <button mat-button>
       <mat-icon>add</mat-icon>

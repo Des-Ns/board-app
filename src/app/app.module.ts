@@ -15,6 +15,7 @@ import { NavigationModule } from './navigation/navigation.module';
 import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { TeamModule } from './team/team.module';
+import { HeaderComponentsModule } from './header-components/header-components.module';
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent],
@@ -31,6 +32,7 @@ import { TeamModule } from './team/team.module';
     SharedModule,
     DashboardModule,
     TeamModule,
+    HeaderComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

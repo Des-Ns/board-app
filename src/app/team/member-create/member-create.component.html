@@ -2,15 +2,17 @@
 <div class="content" mat-dialog-content>
   <header modalTitle class="title" fxLayoutAlign="center center">
     <mat-icon class="icon material-symbols-outlined"> add_box</mat-icon>
-    <h1>Create new project</h1>
+    <h1>Create new member</h1>
   </header>
 
   <mat-divider class="divider"></mat-divider>
 
   <main>
-    <app-project-form
-      (projectAction)="onFormSubmit($event)"
-      [project]="project"
-    ></app-project-form>
+    <app-member-form
+      (memberAction)="onFormSubmit($event)"
+      [member]="member"
+    ></app-member-form>
   </main>
 </div>
+
+<!--* Called from header create member -->

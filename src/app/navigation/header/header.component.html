@@ -7,7 +7,7 @@
     <button mat-icon-button (click)="onMenuChange($event)">
       <mat-icon class="icon" aria-label="menu">menu</mat-icon>
     </button>
-    <span routerLink="welcome">Project Boards</span>
+    <span routerLink="">Project Boards</span>
   </div>
 
   <ul
@@ -17,10 +17,10 @@
     class="list-items"
   >
     <li class="list-item">
-      <a>Projects</a>
+      <a routerLink="projects-table" class="main-link">Projects</a>
     </li>
     <li class="list-item">
-      <a>Filters</a>
+      <a class="main-link">Filters</a>
     </li>
   </ul>
 
@@ -35,18 +35,18 @@
     <mat-icon>add</mat-icon>
   </button>
   <mat-menu #menuNew="matMenu">
-    <button mat-menu-item>Add new project</button>
+    <button mat-menu-item (click)="openCreateProjectDialog()">
+      Add new project
+    </button>
     <mat-divider></mat-divider>
-    <button mat-menu-item>Add new member</button>
+    <button mat-menu-item (click)="openCreateMemberDialog()">
+      Add new member
+    </button>
   </mat-menu>
 
   <button mat-icon-button class="icon" aria-label="notifications">
     <mat-icon>notifications</mat-icon>
   </button>
-
-  <!-- <button mat-icon-button class="icon" aria-label="settings">
-    <mat-icon>settings</mat-icon>
-  </button> -->
 
   <button
     mat-icon-button

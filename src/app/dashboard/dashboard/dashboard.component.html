@@ -16,11 +16,14 @@
         <h3 class="caption">To Do</h3>
         <ul class="list">
           <li class="list-item" *ngFor="let project of toDoProjects$ | async">
-            <app-project [project]="project"></app-project>
+            <app-project [currProject]="project"></app-project>
           </li>
         </ul>
         <!-- ADD PROJECT BUTTON + modal -->
-        <app-project-create></app-project-create>
+        <button mat-button class="add-btn" (click)="openCreateProjectDialog()">
+          <mat-icon>add</mat-icon>
+          ADD NEW PROJECT
+        </button>
       </div>
     </div>
 
@@ -36,7 +39,7 @@
             class="list-item"
             *ngFor="let project of inProgressProjects$ | async"
           >
-            <app-project [project]="project"></app-project>
+            <app-project [currProject]="project"></app-project>
           </li>
         </ul>
       </div>
@@ -54,7 +57,7 @@
             class="list-item"
             *ngFor="let project of finishedProjects$ | async"
           >
-            <app-project [project]="project"></app-project>
+            <app-project [currProject]="project"></app-project>
           </li>
         </ul>
       </div>

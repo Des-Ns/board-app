@@ -1,34 +1,69 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { DashboardService } from '../dashboard.service';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  ViewChild,
+  OnDestroy,
+} from '@angular/core';
+import {
+  FormGroupDirective,
+  FormGroup,
+  FormControl,
+  Validators,
+} from '@angular/forms';
+import { RequestService } from '../../shared/request.service';
 import { Observable } from 'rxjs';
-import { Project } from '../dashboard.models';
+import { Project, projectStatus } from '../../shared/models';
 
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.component.html',
   styleUrls: ['./project-form.component.css'],
 })
-export class ProjectFormComponent implements OnInit {
+export class ProjectFormComponent implements OnInit, OnDestroy {
   projectForm!: FormGroup;
   @Input() project!: Project;
   @Output() projectAction = new EventEmitter<any>();
+  @ViewChild(FormGroupDirective) formGroupDirective!: FormGroupDirective;
 
   members$!: Observable<{ firstName: string; lastName: string; id: string }[]>;
+  projectStatus!: string[];
 
-  constructor(private dashboardService: DashboardService) {}
+  private intervalId: any;
+
+  constructor(private requestService: RequestService) {}
 
   ngOnInit(): void {
-    this.members$ = this.dashboardService.getMembersNamesIds();
+    this.members$ = this.requestService.getMembersNamesIds();
+    this.projectStatus = Object.values(projectStatus);
+    console.log(this.project);
 
-    const { title, description, teamIds, startDate, finalDate } = this.project;
+    const {
+      id,
+      title,
+      description,
+      teamIds,
+      tasks,
+      duration,
+      dateCreated,
+      status,
+      startDate,
+      finalDate,
+    } = this.project;
 
     this.projectForm = new FormGroup({
+      id: new FormControl(id),
       title: new FormControl(title, [Validators.required]),
-      description: new FormControl(description),
-      team: new FormControl(teamIds),
+      description: new FormControl(description, [Validators.required]),
+      teamIds: new FormControl(teamIds),
       startDate: new FormControl(startDate),
       finalDate: new FormControl(finalDate),
+      tasks: new FormControl(tasks),
+      duration: new FormControl(duration),
+      dateCreated: new FormControl(dateCreated ? dateCreated : new Date()),
+      status: new FormControl(status),
     });
   }
 
@@ -36,7 +71,32 @@ export class ProjectFormComponent implements OnInit {
     if (this.projectForm.invalid) {
       return;
     }
+    // const formValue = this.projectForm.value;
+    const formValue = this.projectForm.getRawValue();
 
-    this.projectAction.emit(this.projectForm.value);
+    if (formValue.teamIds.length > 0 && formValue.teamIds[0] !== null) {
+      formValue.teamIds = formValue.teamIds.map(
+        (teamMember: { firstName: string; lastName: string; id: string }) =>
+          teamMember.id
+      );
+    } else {
+      formValue.teamIds = [];
+    }
+
+    console.log(this.projectForm.value);
+    console.log(formValue);
+
+    this.projectAction.emit(formValue);
+
+    this.formGroupDirective.resetForm();
   }
+
+  getDuration(startDate: Date, finalDate: Date): number {
+    const start = new Date(startDate).getTime();
+    const end = new Date(finalDate).getTime();
+    const duration = Math.abs(end - start) / (1000 * 60 * 60 * 24); // Get difference in days
+    return duration;
+  }
+
+  ngOnDestroy(): void {}
 }

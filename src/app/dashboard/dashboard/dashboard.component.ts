@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { RequestService } from '../../shared/request.service';
 import { DashboardService } from '../dashboard.service';
-import { Project } from '../dashboard.models';
+import { ProjectCreateComponent } from '../project-create/project-create.component';
+import { Project } from '../../shared/models';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,20 +15,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
   inProgressProjects$!: Observable<Project[]>;
   finishedProjects$!: Observable<Project[]>;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(
+    private requestService: RequestService,
+    private dashboardService: DashboardService
+  ) {}
 
   ngOnInit(): void {
-    this.dashboardService.fetchProjects();
+    this.requestService.fetchProjects();
 
-    this.toDoProjects$ = this.dashboardService.getToDoProjects();
-    this.inProgressProjects$ = this.dashboardService.getInProgressProjects();
-    this.finishedProjects$ = this.dashboardService.getFinishedProjects();
+    this.toDoProjects$ = this.requestService.getToDoProjects();
+    this.inProgressProjects$ = this.requestService.getInProgressProjects();
+    this.finishedProjects$ = this.requestService.getFinishedProjects();
   }
 
-  show() {
-    console.log(this.toDoProjects$);
-    console.log(this.inProgressProjects$);
-    console.log(this.finishedProjects$);
+  openCreateProjectDialog() {
+    this.dashboardService.openProjectDialog(ProjectCreateComponent);
   }
 
   ngOnDestroy(): void {}

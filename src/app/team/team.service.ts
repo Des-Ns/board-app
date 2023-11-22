@@ -1,50 +1,108 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { DashboardService } from '../dashboard/dashboard.service';
-import {
-  BehaviorSubject,
-  Observable,
-  Subscription,
-  tap,
-  map,
-  filter,
-  forkJoin,
-  catchError,
-  switchMap,
-  of,
-} from 'rxjs';
-import { Member, Project } from '../dashboard/dashboard.models';
+import { Injectable } from '@angular/core';
+import { RequestService } from '../shared/request.service';
+import { Observable, map, take, tap, switchMap, of } from 'rxjs';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Member, Project } from '../shared/models';
+
+import { MemberDetailsCardComponent } from './member-details-card/member-details-card.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TeamService implements OnDestroy {
-  // private members$ = new BehaviorSubject<any[]>([]);
-  private project$ = new BehaviorSubject<Project[]>([]);
+export class TeamService {
   projects$!: Observable<Project[]>;
   members$!: Observable<Member[]>;
-  membersSub$!: Subscription;
 
   members!: Member[];
   memberProjects: Project[] | undefined;
   memberId!: number;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(
+    private requestService: RequestService,
+    private matDialog: MatDialog
+  ) {}
 
   getProjects() {
-    this.dashboardService.fetchProjects();
-    this.projects$ = this.dashboardService.getProjects();
+    this.requestService.fetchProjects();
+    this.projects$ = this.requestService.getProjects();
     return this.projects$;
   }
 
   getMembers() {
-    this.dashboardService.fetchMembers();
-    this.members$ = this.dashboardService.getAllMembers();
+    this.requestService.fetchMembers();
+    this.members$ = this.requestService.getAllMembers();
     return this.members$;
   }
 
-  ngOnDestroy(): void {
-    if (this.membersSub$) {
-      this.membersSub$.unsubscribe();
+  getMemberById(memberId: string) {
+    return this.requestService.getMemberById(memberId);
+  }
+
+  getMemberProjectsTitles(memberId: string) {
+    if (!this.projects$) {
+      this.getProjects();
     }
+
+    return this.projects$?.pipe(
+      switchMap((projects: Project[]) => {
+        if (projects) {
+          return of(
+            projects
+              .filter((project) => project.teamIds?.includes(memberId))
+              .map((project: Project) => ({
+                title: project.title,
+                // id: project.id,
+              }))
+          );
+        } else {
+          return of([]);
+        }
+      })
+    );
+  }
+
+  //* CREATE || EDIT MEMBER - DIALOG
+  openMemberDialog(component: any, member?: Member) {
+    if (member !== undefined) {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = { member };
+      dialogConfig.autoFocus = true;
+      dialogConfig.width = '60%';
+
+      const dialog = this.matDialog.open(component, dialogConfig);
+      dialog
+        .afterClosed()
+        .pipe(take(1))
+        .subscribe(() => {});
+      return;
+    }
+
+    const dialog = this.matDialog.open(component, {
+      autoFocus: true,
+      width: '60%',
+    });
+
+    dialog
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe(() => {});
+
+    return;
+  }
+
+  openMemberDetailsDialog(member: Member) {
+    console.log(member);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { member };
+
+    const dialog = this.matDialog.open(
+      MemberDetailsCardComponent,
+      dialogConfig
+    );
+
+    dialog
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe(() => {});
   }
 }
