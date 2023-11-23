@@ -13,6 +13,7 @@ import { MemberEditComponent } from './member-edit/member-edit.component';
 import { MemberCreateComponent } from './member-create/member-create.component';
 import { MemberDetailsCardComponent } from './member-details-card/member-details-card.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TeamsTableComponent } from './teams-table/teams-table.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MemberEditComponent,
     MemberCreateComponent,
     MemberDetailsCardComponent,
+    TeamsTableComponent,
   ],
   imports: [
     CommonModule,

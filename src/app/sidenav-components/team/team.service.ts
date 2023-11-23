@@ -6,7 +6,33 @@ import { Member, Project } from 'src/app/shared/models';
 
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
-import { Observable, map, take, tap, switchMap, of } from 'rxjs';
+import {
+  Observable,
+  map,
+  take,
+  tap,
+  switchMap,
+  of,
+  mergeMap,
+  BehaviorSubject,
+  distinctUntilChanged,
+  shareReplay,
+  concatMap,
+} from 'rxjs';
+
+interface ProjectMainMember {
+  projectId: string;
+  projectTitle: string;
+  members?: {
+    id: string;
+    occupation: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    avatar: string;
+    phones: string[];
+  };
+}
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +40,7 @@ import { Observable, map, take, tap, switchMap, of } from 'rxjs';
 export class TeamService {
   projects$!: Observable<Project[]>;
   members$!: Observable<Member[]>;
+  projectMainMembers$!: Observable<any>;
 
   members!: Member[];
   memberProjects: Project[] | undefined;
@@ -36,6 +63,49 @@ export class TeamService {
     return this.members$;
   }
 
+  getProjectsMainMembers() {
+    this.getProjects();
+    return (this.projectMainMembers$ = this.members$.pipe(
+      map((members: Member[]) => {
+        return members.map((member: Member) => ({
+          id: member.id,
+          occupation: member.occupation,
+          firstName: member.firstName,
+          lastName: member.lastName,
+          email: member.email,
+          avatar: member.avatar,
+          phones: member.phones,
+        }));
+      }),
+      tap((val) => console.log(val)),
+      switchMap((members) =>
+        this.projects$.pipe(
+          tap((val) => console.log(members)),
+          map((projects: Project[]) =>
+            projects.map(({ id, title, teamIds }) => ({
+              id: id,
+              title: title,
+              teamIds: teamIds,
+            }))
+          ),
+          map((projecIds: { id: string; title: string; teamIds: string[] }[]) =>
+            projecIds.map((project) => {
+              const mainTeamMembers = members.filter((member: any) =>
+                project.teamIds?.includes(member.id)
+              );
+              return {
+                projectId: project.id,
+                projectTitle: project.title,
+                members: mainTeamMembers,
+              };
+            })
+          ),
+          tap((val) => console.log(val))
+        )
+      )
+    ));
+  }
+
   getMemberById(memberId: string) {
     return this.requestService.getMemberById(memberId);
   }
@@ -46,6 +116,7 @@ export class TeamService {
     }
 
     return this.projects$?.pipe(
+      take(1),
       switchMap((projects: Project[]) => {
         if (projects) {
           return of(
@@ -108,3 +179,35 @@ export class TeamService {
       .subscribe(() => {});
   }
 }
+
+//* TAKE A LOOK
+// getProjectsMainMembers() {
+//   this.getProjects();
+
+//   return (this.projectMainMembers$ = this.members$.pipe(
+//     switchMap((members) =>
+//       this.projects$.pipe(
+//         map((projects: Project[]) =>
+//           projects.map(({ id, title, teamIds }) => ({
+//             id: id,
+//             title: title,
+//             teamIds: teamIds,
+//           }))
+//         ),
+//         map((projecIds: { id: string; title: string; teamIds: string[] }[]) =>
+//           projecIds.map((project) => {
+//             const mainTeamMembers = members.filter((member: any) =>
+//               project.teamIds?.includes(member.id)
+//             );
+//             return {
+//               projectId: project.id,
+//               projectTitle: project.title,
+//               members: mainTeamMembers,
+//             };
+//           })
+//         ),
+//         tap((val) => console.log('After mapping:', val))
+//       )
+//     )
+//   ));
+// }

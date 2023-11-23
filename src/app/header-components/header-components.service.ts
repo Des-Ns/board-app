@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { RequestService } from '../shared/request.service';
 import { Member, Project } from '../shared/models';
 
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

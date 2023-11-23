@@ -12,7 +12,7 @@
       "fullAddress": "8941 Armstrong Road ",
       "city": "Gotham",
       "postCode": "PA 19067",
-      "country": "United States",
+      "country": "MidWorld",
       "phones": ["19191919"]
     },
     {
@@ -28,7 +28,7 @@
       "city": "Hinesville",
       "postCode": "GA 31313",
       "country": "United States",
-      "phones": ["2222222222", "3333333333"]
+      "phones": ["87656891", "33333333"]
     },
     {
       "id": "3",
@@ -43,7 +43,7 @@
       "city": "Arvada",
       "postCode": "CO 80003",
       "country": "United States",
-      "phones": ["2222222222", "3333333333"]
+      "phones": ["22222222", "33333333"]
     },
     {
       "id": "4",
@@ -58,7 +58,7 @@
       "city": "Mebane",
       "postCode": "NC 27302",
       "country": "United States",
-      "phones": ["2222222222", "3333333333"]
+      "phones": ["22222222", "33333333"]
     },
     {
       "id": "5",
@@ -73,7 +73,7 @@
       "city": "Sykesville",
       "postCode": "21784",
       "country": "USA",
-      "phones": ["0899966332", "3333333333"]
+      "phones": ["89996638", "33333333"]
     },
     {
       "id": "6",
@@ -103,7 +103,7 @@
       "city": "New Ville",
       "postCode": "12312",
       "country": "United Kingdom",
-      "phones": ["345777127", "254362345"]
+      "phones": ["34577712", "25436234"]
     },
     {
       "id": "8",

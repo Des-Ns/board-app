@@ -1,0 +1,89 @@
+.card {
+  width: 90%;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  background-color: rgba(30, 148, 216, 0.12);
+}
+
+.main-container {
+  margin-bottom: 1rem;
+}
+
+.title {
+  color: #808080;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.sub-title {
+  color: #808080;
+  font-weight: 400;
+}
+
+.content-container {
+  max-width: 100%;
+}
+
+.table-container {
+  max-width: 100%;
+  overflow: auto;
+}
+
+.table {
+  border-bottom: 1px solid lightgray;
+}
+
+.mat-mdc-table-sticky {
+  border-right: 1px solid lightgray;
+}
+
+.row-number {
+  text-align: center;
+}
+
+.name-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.image-container {
+  height: 40px;
+  margin-left: 1rem;
+}
+
+.image-container img {
+  border-radius: 50%;
+  height: 100%;
+  width: auto;
+}
+
+.phone {
+  cursor: pointer;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.th {
+  white-space: nowrap;
+}
+
+.projects-btn {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.headder-row {
+  cursor: pointer;
+}

@@ -1,0 +1,117 @@
+<div class="main-container" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="card" fxLayout="column" fxLayoutAlign="center center">
+    <div class="content-container">
+      <!--* PROJECT TITLE + BUTTON -->
+      <div
+        class="title-container"
+        [fxLayout]="tableData.members.length > 0 ? 'row' : 'column'"
+        [fxLayoutAlign]="
+          tableData.members.length > 1
+            ? 'space-between center'
+            : 'center center'
+        "
+      >
+        <div class="title-text-container">
+          <h3 class="title">Project "{{ tableData.projectTitle }}"</h3>
+          <h3 class="sub-title" *ngIf="tableData.members.length > 0">
+            Main Team
+          </h3>
+        </div>
+
+        <div class="edit-btn-container">
+          <button
+            mat-fab
+            color="primary"
+            *ngIf="tableData.members.length > 0"
+            matTooltip="Edit members"
+            matTooltipPosition="above"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+
+        <h3 class="sub-title" *ngIf="tableData.members.length < 1">
+          No team present
+        </h3>
+
+        <button
+          mat-raised-button
+          color="accent"
+          *ngIf="tableData.members.length < 1"
+        >
+          Create Team
+        </button>
+      </div>
+
+      <!--* TABLE CONTAINER -->
+      <div
+        *ngIf="tableData.members.length > 0"
+        class="table-container Smat-elevation-z8"
+        fxLayoutAlign="center center"
+      >
+        <!--* TABLE -->
+        <table mat-table [dataSource]="dataSource" matSort class="table">
+          <!--* 1 Row Number -->
+          <ng-container matColumnDef="rowNumber" sticky>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+            <td
+              mat-cell
+              *matCellDef="let element; let i = index"
+              class="row-number"
+            >
+              {{ i + 1 }}
+            </td>
+          </ng-container>
+
+          <!--* 2 Occupation Column -->
+          <ng-container matColumnDef="occupation">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Occupation
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.occupation }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            class="headder-row"
+            (click)="onRowClick(row.id)"
+          ></tr>
+
+          <!--* 3 Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let row">
+              <div class="name-container" fxLayoutAlign="space-between center">
+                <div class="name">{{ row.firstName }} {{ row.lastName }}</div>
+                <div class="image-container">
+                  <img src="{{ row.avatar }}" alt="" />
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
+          <!--* 4 Email Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+            <td mat-cell *matCellDef="let row">{{ row.email }}</td>
+          </ng-container>
+
+          <!--* 5 Phone -->
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+            <td mat-cell *matCellDef="let row" class="phones">
+              <span
+                matTooltip="{{ row.phones | toolTipList }} "
+                matTooltipPosition="above"
+                >{{ row.phones[0] | phonePipe }}
+                <span *ngIf="row.phones.length > 1">...</span></span
+              >
+            </td>
+          </ng-container>
+        </table>
+      </div>
+    </div>
+  </mat-card>
+</div>

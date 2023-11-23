@@ -5,5 +5,9 @@
     aria-label="groups"
     fontIcon="groups"
   ></mat-icon>
-  <h1 class="title">Teams managment</h1>
+  <h1 class="title">Main teams managment</h1>
 </header>
+
+<ng-container *ngFor="let table of mainTeamsData$ | async; let i = index">
+  <app-teams-table [tableData]="table"></app-teams-table>
+</ng-container>

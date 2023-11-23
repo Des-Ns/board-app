@@ -4,7 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { Member, Project, Task } from './models';
 
 import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, find, map, tap } from 'rxjs/operators';
+import {
+  filter,
+  find,
+  map,
+  tap,
+  take,
+  distinctUntilChanged,
+} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',

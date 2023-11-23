@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { TeamService } from '../team.service';
+
+import { Observable, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-teams',
   templateUrl: './teams.component.html',
-  styleUrls: ['./teams.component.css']
+  styleUrls: ['./teams.component.css'],
 })
-export class TeamsComponent {
+export class TeamsComponent implements OnInit {
+  mainTeamsData$!: Observable<any[]>;
 
+  constructor(private teamService: TeamService) {}
+
+  ngOnInit() {
+    // this.teamService.getProjects();
+    this.mainTeamsData$ = this.teamService.getProjectsMainMembers();
+  }
 }
