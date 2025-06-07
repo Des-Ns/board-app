@@ -6,19 +6,7 @@ import { Member, Project } from 'src/app/shared/models';
 
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
-import {
-  Observable,
-  map,
-  take,
-  tap,
-  switchMap,
-  of,
-  mergeMap,
-  BehaviorSubject,
-  distinctUntilChanged,
-  shareReplay,
-  concatMap,
-} from 'rxjs';
+import { Observable, map, take, tap, switchMap, of, combineLatest } from 'rxjs';
 
 interface ProjectMainMember {
   projectId: string;
@@ -65,44 +53,25 @@ export class TeamService {
 
   getProjectsMainMembers() {
     this.getProjects();
-    return (this.projectMainMembers$ = this.members$.pipe(
-      map((members: Member[]) => {
-        return members.map((member: Member) => ({
-          id: member.id,
-          occupation: member.occupation,
-          firstName: member.firstName,
-          lastName: member.lastName,
-          email: member.email,
-          avatar: member.avatar,
-          phones: member.phones,
-        }));
-      }),
-      tap((val) => console.log(val)),
-      switchMap((members) =>
-        this.projects$.pipe(
-          tap((val) => console.log(members)),
-          map((projects: Project[]) =>
-            projects.map(({ id, title, teamIds }) => ({
-              id: id,
-              title: title,
-              teamIds: teamIds,
-            }))
-          ),
-          map((projecIds: { id: string; title: string; teamIds: string[] }[]) =>
-            projecIds.map((project) => {
-              const mainTeamMembers = members.filter((member: any) =>
-                project.teamIds?.includes(member.id)
-              );
-              return {
-                projectId: project.id,
-                projectTitle: project.title,
-                members: mainTeamMembers,
-              };
-            })
-          ),
-          tap((val) => console.log(val))
-        )
-      )
+    this.getMembers();
+
+    return (this.projectMainMembers$ = combineLatest([
+      this.members$,
+      this.projects$,
+    ]).pipe(
+      map(([members, projects]) =>
+        projects.map((project) => {
+          const mainTeamMembers = members.filter((member) =>
+            project.teamIds?.includes(member.id)
+          );
+          return {
+            projectId: project.id,
+            projectTitle: project.title,
+            members: mainTeamMembers,
+          };
+        })
+      ),
+      tap((val) => console.log(val, '=>Used'))
     ));
   }
 
@@ -122,10 +91,7 @@ export class TeamService {
           return of(
             projects
               .filter((project) => project.teamIds?.includes(memberId))
-              .map(
-                (project: Project) => project.title
-                // id: project.id,
-              )
+              .map((project: Project) => project.title)
           );
         } else {
           return of([]);
@@ -143,10 +109,8 @@ export class TeamService {
       dialogConfig.width = '60%';
 
       const dialog = this.matDialog.open(component, dialogConfig);
-      dialog
-        .afterClosed()
-        .pipe(take(1))
-        .subscribe(() => {});
+      dialog.afterClosed();
+
       return;
     }
 
@@ -158,7 +122,11 @@ export class TeamService {
     dialog
       .afterClosed()
       .pipe(take(1))
-      .subscribe(() => {});
+      .subscribe(() => {
+        // Clean up resources or state here
+        // Maybe show notification
+        // without such actions, there is no need for the pipe or subscription
+      });
 
     return;
   }
@@ -176,38 +144,10 @@ export class TeamService {
     dialog
       .afterClosed()
       .pipe(take(1))
-      .subscribe(() => {});
+      .subscribe(() => {
+        // Clean up resources or state here
+        // Maybe show notification
+        // without such actions, there is no need for the pipe or subscription
+      });
   }
 }
-
-//* TAKE A LOOK
-// getProjectsMainMembers() {
-//   this.getProjects();
-
-//   return (this.projectMainMembers$ = this.members$.pipe(
-//     switchMap((members) =>
-//       this.projects$.pipe(
-//         map((projects: Project[]) =>
-//           projects.map(({ id, title, teamIds }) => ({
-//             id: id,
-//             title: title,
-//             teamIds: teamIds,
-//           }))
-//         ),
-//         map((projecIds: { id: string; title: string; teamIds: string[] }[]) =>
-//           projecIds.map((project) => {
-//             const mainTeamMembers = members.filter((member: any) =>
-//               project.teamIds?.includes(member.id)
-//             );
-//             return {
-//               projectId: project.id,
-//               projectTitle: project.title,
-//               members: mainTeamMembers,
-//             };
-//           })
-//         ),
-//         tap((val) => console.log('After mapping:', val))
-//       )
-//     )
-//   ));
-// }

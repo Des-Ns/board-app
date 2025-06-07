@@ -25,6 +25,7 @@
             *ngIf="tableData.members.length > 0"
             matTooltip="Edit members"
             matTooltipPosition="above"
+            (click)="onClick()"
           >
             <mat-icon>edit</mat-icon>
           </button>
@@ -38,6 +39,7 @@
           mat-raised-button
           color="accent"
           *ngIf="tableData.members.length < 1"
+          (click)="onClick()"
         >
           Create Team
         </button>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Project } from 'src/app/shared/models';
-import { take, tap } from 'rxjs';
+import { take } from 'rxjs';
 
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
@@ -21,7 +21,6 @@ export class DashboardService {
       dialogConfig.autoFocus = true;
       dialogConfig.width = '60%';
 
-      console.log(dialogConfig);
       const dialog = this.matDialog.open(component, dialogConfig);
 
       dialog
@@ -29,6 +28,8 @@ export class DashboardService {
         .pipe(take(1))
         .subscribe(() => {
           // Clean up resources or state here
+          // Maybe show notification
+          // without such actions, there is no need for the pipe or subscription
         });
       return;
     }
@@ -43,6 +44,7 @@ export class DashboardService {
       .pipe(take(1))
       .subscribe(() => {
         // Clean up resources or state here
+        // without such actions, there is no need for the pipe or subscription
       });
     return;
   }

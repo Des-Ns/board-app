@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TeamService } from '../team.service';
 
-import { Observable, distinctUntilChanged } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-teams',

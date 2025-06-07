@@ -44,6 +44,7 @@ export class MemberFormComponent implements OnInit {
       fullAddress,
       city,
       postCode,
+      country,
       phones,
     } = this.member;
 
@@ -59,7 +60,7 @@ export class MemberFormComponent implements OnInit {
       fullAddress: new FormControl(fullAddress, [Validators.required]),
       city: new FormControl(city, [Validators.required]),
       postCode: new FormControl(postCode, [Validators.required]),
-      country: new FormControl('', [Validators.required]),
+      country: new FormControl(country, [Validators.required]),
       phones: new FormArray([], [Validators.required]),
     });
 
@@ -69,6 +70,10 @@ export class MemberFormComponent implements OnInit {
           new FormControl(phone)
         );
       });
+    } else {
+      (<FormArray>this.memberForm.controls['phones']).push(
+        new FormControl('', [Validators.required])
+      );
     }
   }
 

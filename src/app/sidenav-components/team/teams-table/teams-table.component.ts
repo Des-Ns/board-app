@@ -54,5 +54,9 @@ export class TeamsTableComponent {
       });
   }
 
+  onClick() {
+    alert('Not implemented!');
+  }
+
   ngOnDestroy(): void {}
 }

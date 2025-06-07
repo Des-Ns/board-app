@@ -28,8 +28,6 @@ export class MemberEditComponent {
     this.requestService.putEditedMember(member).subscribe(() => {
       this.matDialogRef.close();
       this.requestService.fetchMembers();
-
-      console.log('put edited memebr =>');
     });
   }
 }

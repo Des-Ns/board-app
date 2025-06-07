@@ -1,0 +1,406 @@
+{
+  "members": [
+    {
+      "id": "1",
+      "firstName": "Jake",
+      "lastName": "Chambers",
+      "email": "jchambers@midwordls.io",
+      "avatar": "https://i.pravatar.cc/300?img=3",
+      "bio": "Passionate about design and creativity. Enjoys solving complex problems. Experienced in team management.",
+      "occupation": "manager",
+      "projects": [
+        "1",
+        "2",
+        "3"
+      ],
+      "fullAddress": "8941 Armstrong Road ",
+      "city": "Gotham",
+      "postCode": "PA 19067",
+      "country": "MidWorld",
+      "phones": [
+        "19191919"
+      ]
+    },
+    {
+      "id": "2",
+      "firstName": "Eddie",
+      "lastName": "Dean",
+      "email": "edean@midwordlsss.io",
+      "avatar": "https://i.pravatar.cc/300?img=68",
+      "bio": "Skilled artisan with a passion for carving and woodworking.",
+      "occupation": "carver",
+      "projects": [
+        "1",
+        "2",
+        "3"
+      ],
+      "fullAddress": "8532 Silver Spear Lane",
+      "city": "Hinesville",
+      "postCode": "GA 31313",
+      "country": "United States",
+      "phones": [
+        "87656891",
+        "33333333"
+      ]
+    },
+    {
+      "id": "3",
+      "firstName": "Susanna",
+      "lastName": "Holmes",
+      "email": "s_holmes@midwordls.io",
+      "avatar": "https://i.pravatar.cc/300?img=16",
+      "bio": "Dedicated to overseeing and managing teams to success. ",
+      "occupation": "supervisor",
+      "projects": [
+        "2",
+        "3"
+      ],
+      "fullAddress": "261 Jockey Hollow Lane",
+      "city": "Arvada",
+      "postCode": "CO 80003",
+      "country": "United States",
+      "phones": [
+        "22222222",
+        "33333333"
+      ]
+    },
+    {
+      "id": "4",
+      "firstName": "Olivia",
+      "lastName": "Smith ",
+      "email": "osmith@midwordls.io",
+      "avatar": "https://i.pravatar.cc/300?img=5",
+      "bio": "Software developer with a love for coding and innovation. Coding enthusiast.",
+      "occupation": "Developer",
+      "projects": [
+        "4"
+      ],
+      "fullAddress": "7874 W. Fairway Court ",
+      "city": "Mebane",
+      "postCode": "NC 27302",
+      "country": "United States",
+      "phones": [
+        "22222222",
+        "33333333"
+      ]
+    },
+    {
+      "id": "5",
+      "firstName": "Ethan",
+      "lastName": "Johnson",
+      "email": "ejohnson@midwordlss.io",
+      "avatar": "https://i.pravatar.cc/300?img=15",
+      "bio": "Loves crafting beautiful designs and creating art. Passionate about design.",
+      "occupation": "Designer",
+      "projects": [
+        "4"
+      ],
+      "fullAddress": "364 East Sugar Dr.",
+      "city": "Sykesville",
+      "postCode": "21784",
+      "country": "USA",
+      "phones": [
+        "89996638",
+        "33333333"
+      ]
+    },
+    {
+      "id": "6",
+      "firstName": "Ava",
+      "lastName": "Davis",
+      "email": "adavis@midwordls@.io",
+      "avatar": "https://i.pravatar.cc/300?img=8",
+      "bio": "Experienced in project management and team coordination. Web developer and coder.",
+      "occupation": "Analyst",
+      "projects": [
+        "4"
+      ],
+      "fullAddress": "52 Stonybrook Drive",
+      "city": "Solon",
+      "postCode": "OH 44139",
+      "country": "United States",
+      "phones": [
+        "23000893",
+        "45459890",
+        "99089912"
+      ]
+    },
+    {
+      "id": "7",
+      "firstName": "Mason",
+      "lastName": "Wilson",
+      "email": "mwilson@midwordls@.io",
+      "avatar": "https://i.pravatar.cc/300?img=20",
+      "bio": "Adept at web development and building amazing websites.",
+      "occupation": "Engineer",
+      "projects": [
+        "5"
+      ],
+      "fullAddress": "Some Street St",
+      "city": "New Ville",
+      "postCode": "12312",
+      "country": "United Kingdom",
+      "phones": [
+        "34577712",
+        "25436234"
+      ]
+    },
+    {
+      "id": "8",
+      "firstName": "Sophia",
+      "lastName": "Anderson",
+      "email": "sanderson@midwordls@.io",
+      "avatar": "https://i.pravatar.cc/300?img=25",
+      "bio": "Enthusiastic about UI/UX design and user-friendly interfaces.",
+      "occupation": "Marketer",
+      "projects": [
+        "5"
+      ],
+      "fullAddress": "456 Oak St",
+      "city": "West Lafayette",
+      "postCode": "PA 19067",
+      "country": "United Kingdom",
+      "phones": [
+        "33345342"
+      ]
+    },
+    {
+      "id": "9",
+      "firstName": "Noah",
+      "lastName": "Martinez",
+      "email": "nmartinez@midwordls@.io",
+      "avatar": "https://i.pravatar.cc/300?img=12",
+      "bio": "Passionate about coding and bringing ideas to life.",
+      "occupation": "Writer",
+      "projects": [],
+      "fullAddress": "456 Dark News St",
+      "city": "Fictional City",
+      "postCode": "67890",
+      "country": "Fictional",
+      "phones": [
+        "3333333333"
+      ]
+    },
+    {
+      "id": "10",
+      "firstName": "Isabella",
+      "lastName": "Taylor",
+      "email": "itaylor@midwordls@.io",
+      "avatar": "https://i.pravatar.cc/300?img=30",
+      "bio": "Experienced in painting and adding artistic touches.",
+      "occupation": "Accountant",
+      "projects": [],
+      "fullAddress": "456 Oak St",
+      "city": "Imaginary Town",
+      "postCode": "67789",
+      "country": "Imaginary Country",
+      "phones": [
+        "2222222222"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "East business center - Main gate.",
+      "description": "Enhance the main gate of the East Business Center to create an inviting and secure entry point. Improve aesthetics and functionality with state-of-the-art access control systems and landscaping.",
+      "teamIds": [
+        "1",
+        "2"
+      ],
+      "startDate": "2023-10-31T22:00:00.000Z",
+      "finalDate": "2023-11-24T22:00:00.000Z",
+      "tasks": [
+        "1",
+        "2",
+        "3"
+      ],
+      "duration": 48,
+      "dateCreated": "Fri Oct 27 2023 16:08:21 GMT+0300 (Eastern European Summer Time)",
+      "status": "to-do"
+    },
+    {
+      "id": "2",
+      "title": "Floral decorated wall panels.",
+      "description": "Transform interior spaces with beautiful floral-themed wall panels. These decorative elements will add a touch of nature's beauty to any environment.",
+      "tasks": [
+        "5"
+      ],
+      "teamIds": [
+        "1",
+        "2",
+        "3"
+      ],
+      "status": "in-progress",
+      "duration": 12,
+      "dateDreated": "Fri Oct 27 2023 18:08:21 GMT+0300 (Eastern European Summer Time)",
+      "startDate": "Fri Oct 27 2023 16:08:21 GMT+0300 (Eastern European Summer Time)",
+      "finalDate": "Mon Oct 30 2023 16:08:21 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "3",
+      "title": "Spiral shaped staircase",
+      "description": "Transform interior spaces with beautiful floral-themed wall panels. These decorative elements will add a touch of nature's beauty to any environment.",
+      "tasks": [
+        "6"
+      ],
+      "teamIds": [
+        "1",
+        "2",
+        "3"
+      ],
+      "status": "finished",
+      "duration": 12,
+      "dateCreated": "Fri Oct 27 2023 20:08:21 GMT+0300 (Eastern European Summer Time)",
+      "startDate": "Fri Oct 27 2023 16:08:21 GMT+0300 (Eastern European Summer Time)",
+      "finalDate": "Mon Oct 30 2023 16:08:21 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "4",
+      "title": "Modern Office Renovation",
+      "description": "Upgrade the office space with a modern design to boost productivity and creativity.",
+      "tasks": [
+        "7",
+        "8"
+      ],
+      "teamIds": [
+        "4",
+        "5",
+        "6"
+      ],
+      "status": "to-do",
+      "duration": 60,
+      "dateCreated": "Fri Oct 27 2023 10:00:00 GMT+0300 (Eastern European Summer Time)",
+      "startDate": "Fri Oct 27 2023 16:08:21 GMT+0300 (Eastern European Summer Time)",
+      "finalDate": "Mon Oct 30 2023 16:08:21 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "5",
+      "title": "Website Redesign",
+      "description": "Revamp the company's website to provide a fresh and engaging user experience.",
+      "tasks": [
+        "9"
+      ],
+      "teamIds": [
+        "7",
+        "8"
+      ],
+      "status": "in-progress",
+      "duration": 30,
+      "dateCreated": "Fri Oct 27 2023 12:00:00 GMT+0300 (Eastern European Summer Time)",
+      "startDate": "Fri Oct 27 2023 16:08:21 GMT+0300 (Eastern European Summer Time)",
+      "finalDate": "Mon Oct 30 2023 16:08:21 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "dc27b96c-d10f-486b-afc7-5f9ccf42c214",
+      "title": "test",
+      "description": "",
+      "teamIds": [],
+      "startDate": null,
+      "finalDate": null,
+      "tasks": [],
+      "duration": 0,
+      "dateCreated": "2023-11-10T16:46:24.181Z",
+      "status": "finished"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Analize fabrication workflow inefficiencies.",
+      "description": "Examine the production process in detail to identify and address any inefficiencies that may be affecting the quality and efficiency of fabrication.",
+      "members": [
+        "1",
+        "2",
+        "3"
+      ],
+      "duration": 6,
+      "dateCreated": "Fri Oct 27 2023 20:08:21 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "2",
+      "title": "Detail existing floral elements.",
+      "description": "Delve into the intricacies of existing floral elements, focusing on refining and enhancing their appearance and structure. Ensure that every petal and leaf is a work of art.",
+      "members": [
+        "6",
+        "7"
+      ],
+      "duration": 6,
+      "dateCreated": "Fri Oct 27 2023 20:08:21 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "3",
+      "title": "Establish detailed composition layout.",
+      "description": "Create a comprehensive and detailed layout plan that defines the arrangement and positioning of elements. ",
+      "members": [
+        "2",
+        "3"
+      ],
+      "duration": 6,
+      "dateCreated": "Fri Oct 27 2023 20:08:21 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "4",
+      "title": "Paint job.",
+      "description": "Ensure that the paint application is even, durable, and enhances the visual appeal of the finished product.",
+      "members": [
+        "4"
+      ],
+      "duration": 6,
+      "dateCreated": "Fri Oct 27 2023 20:08:21 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "5",
+      "title": "Touch up painted product.",
+      "description": "Perform careful touch-up work on painted products to ensure they meet the highest quality standards. Correct imperfections and blemishes to deliver a flawless end product.",
+      "members": [
+        "1",
+        "4"
+      ],
+      "duration": 6,
+      "dateCreated": "Fri Oct 27 2023 20:08:21 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "6",
+      "title": "Finalize Design Mockups",
+      "description": "Create the final design mockups for the website redesign project.",
+      "members": [
+        "7",
+        "8"
+      ],
+      "duration": 8,
+      "dateCreated": "Fri Oct 27 2023 16:00:00 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "7",
+      "title": "Establish layout",
+      "description": "Create detailed interior layout.",
+      "members": [
+        "9"
+      ],
+      "duration": 10,
+      "dateCreated": "Fri Oct 27 2023 17:00:00 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "8",
+      "title": "Test Website Functionality",
+      "description": "Thoroughly test the website to ensure all features are working correctly.",
+      "members": [
+        "10",
+        "11"
+      ],
+      "duration": 7,
+      "dateCreated": "Fri Oct 27 2023 18:00:00 GMT+0300 (Eastern European Summer Time)"
+    },
+    {
+      "id": "9",
+      "title": "Prepare Project Documentation",
+      "description": "Create comprehensive project documentation for future reference.",
+      "members": [
+        "12"
+      ],
+      "duration": 5,
+      "dateCreated": "Fri Oct 27 2023 19:00:00 GMT+0300 (Eastern European Summer Time)"
+    }
+  ]
+}

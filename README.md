@@ -1,27 +1,52 @@
 # BoardApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+BoardApp is an Angular-based project management application that allows users to manage projects, teams, members, and tasks with a modern UI built using Angular Material.
 
-## Development server
+## Key Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Project Management:** Create, edit, delete, and view projects, each with a title, description, status, team members, tasks, and date range.
+- **Team & Member Management:** Manage team members, including their details, roles, and project assignments. Members can be created, edited, or deleted.
+- **Task Management:** Assign tasks to projects and members, and track their status.
+- **Dashboard:** Visual overview of projects grouped by status (to-do, in-progress, finished).
+- **Tables & Lists:** Interactive tables for projects and members, with filtering, sorting, and pagination.
+- **Dialogs:** Use of modal dialogs for creating/editing projects and members.
+- **Mock Backend:** Uses json-server with db.json for local API simulation.
+- **Responsive UI:** Built with Angular Material components and Flex Layout for a responsive, user-friendly experience.
 
-## Code scaffolding
+## Architecture
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular CLI Structure:** Standard Angular CLI layout with modular organization.
+- **Services:** Centralized data and API logic in Angular services.
+- **State Management:** Uses RxJS BehaviorSubjects and Observables for reactive state.
+- **Dialogs:** Angular Material dialogs for CRUD operations.
+- **Mock API:** json-server for simulating RESTful backend.
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Install dependencies:
+   ```cmd
+   npm install
+   ```
+2. Start the Angular app:
+   ```cmd
+   npm start
+   ```
+3. Start the mock API server:
 
-## Running unit tests
+   ```cmd
+   npx json-server db.json
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Restoring the Original Database
 
-## Running end-to-end tests
+If you want to reset the mock backend to its original state, you can restore the original `db.json`:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Locate the backup file `db.original.json` in the project root.
+2. Replace your current `db.json` with the original:
 
-## Further help
+## Project Structure
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- `src/app/` - Main application code
+- `src/app/shared/` - Shared models, services, and pipes
+- `src/app/sidenav-components/` - Dashboard, team, and related features
+- `db.json` - Mock database for json-server

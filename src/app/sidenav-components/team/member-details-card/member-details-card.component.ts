@@ -36,6 +36,8 @@ export class MemberDetailsCardComponent {
 
     this.requestService.deleteMember(this.member.id).subscribe(() => {
       console.log('deleted => ', this.member);
+
+      this.requestService.fetchMembers();
     });
   }
 }
